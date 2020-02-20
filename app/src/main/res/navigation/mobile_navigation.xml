@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.shopping.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_zhuanti"
+        android:name="com.example.shopping.ui.zhuanti.ZhuantiFragment"
+        android:label="@string/title_zhuanti"
+        tools:layout="@layout/fragment_zhuanti" />
+
+    <fragment
+        android:id="@+id/navigation_fenlei"
+        android:name="com.example.shopping.ui.fenlei.FenleiFragment"
+        android:label="@string/title_fenlei"
+        tools:layout="@layout/fragment_fenlei" />
+    <fragment
+        android:id="@+id/navigation_shopping"
+        android:name="com.example.shopping.ui.shopping.ShoppingFragment"
+        android:label="@string/title_shopping"
+        tools:layout="@layout/fragment_shopping" />
+    <fragment
+        android:id="@+id/navigation_mine"
+        android:name="com.example.shopping.ui.mine.MineFragment"
+        android:label="@string/title_mine"
+        tools:layout="@layout/fragment_mine" />
+</navigation>

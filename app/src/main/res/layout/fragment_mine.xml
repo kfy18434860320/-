@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_height="180dp">
+        <ImageView
+            android:src="@mipmap/a"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/img_mine"
+            android:layout_marginBottom="40dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+        <TextView
+            android:id="@+id/tv_mine"
+            app:layout_constraintLeft_toRightOf="@id/img_mine"
+            app:layout_constraintTop_toTopOf="@id/img_mine"
+            app:layout_constraintBottom_toBottomOf="@id/img_mine"
+            android:layout_marginLeft="20dp"
+            android:text="kk"
+            android:textColor="@color/colorBai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_mine"
+        android:background="@color/colorBai"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

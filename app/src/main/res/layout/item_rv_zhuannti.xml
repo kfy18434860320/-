@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/colorBai"
+    android:paddingBottom="10dp"
+    android:layout_height="wrap_content">
+    <ImageView
+        android:id="@+id/img_zhuanti"
+        android:layout_width="240dp"
+        android:layout_height="230dp"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/titlezhuanti"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="25dp"
+        android:layout_width="match_parent"
+        android:textSize="16sp"
+        android:layout_height="20dp"/>
+
+</LinearLayout>
