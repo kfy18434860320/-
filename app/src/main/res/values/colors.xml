@@ -6,4 +6,8 @@
     <color name="colorBai">#ffffff</color>
     <color name="colorHei">#000000</color>
     <color name="colorHui">#B9B1B1</color>
+    <color name="col_gray_line">#D3D1D1</color>
+    <color name="col_white">#ffffff</color>
+    <color name="col_black">#000000</color>
+    <color name="col_gray_word">#7C7A7A</color>
 </resources>

@@ -11,6 +11,7 @@ public class Constant {
 
     public static final String Base_shopping_url = "https://cdwan.cn/";
 
+    public static final String BASE_SHOP_URL = "https://cdwan.cn/api/";  //商城的基础地址
 
 
     //网络缓存的地址

@@ -5,6 +5,7 @@ import android.util.Log;
 import com.example.shopping.common.Constant;
 import com.example.shopping.models.api.CategroylistApi;
 import com.example.shopping.models.api.PinpaiApi;
+import com.example.shopping.models.api.ShopApi;
 import com.example.shopping.models.api.ShouyeApi;
 import com.example.shopping.models.api.WanApi;
 import com.example.shopping.utils.SystemUtils;
@@ -40,7 +41,7 @@ public class HttpManager {
     private static ShouyeApi shouyeApi;
     private static PinpaiApi pinpaiApi;
     private static CategroylistApi categroylistApi;
-
+    private ShopApi shopApi;  //商城的接口
 
 
     private static volatile HttpManager instance;
@@ -128,14 +129,16 @@ public class HttpManager {
         return categroylistApi;
     }
 
-
+    public ShopApi getShopApi(){
+        if(shopApi == null) shopApi = getRetrofit(Constant.BASE_SHOP_URL).create(ShopApi.class);
+        return shopApi;
+    }
 
 
     /**
      * 获取商城的接口
      * @return
      */
-
 
     /**
      * 抽取获取对应网络请求api的接口

@@ -1,6 +1,7 @@
 package com.example.shopping.ui.fenlei;
 
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.text.TextUtils;
 import android.widget.ImageView;
@@ -12,12 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.shopping.R;
 import com.example.shopping.adapter.CategroyAdapter;
+import com.example.shopping.base.BaseAdapter;
 import com.example.shopping.base.BaseFragment;
 import com.example.shopping.interfaces.shangcheng.CategroyListContract;
 import com.example.shopping.models.bean.CategroyCommunityBean;
 import com.example.shopping.models.bean.CategroyListBean;
 import com.example.shopping.models.bean.CurrentCategoryRvBean;
 import com.example.shopping.persenter.fenlei.CategroyPersenter;
+import com.example.shopping.ui.fenlei.activity.SortDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +33,8 @@ import q.rorbin.verticaltablayout.widget.QTabView;
 import q.rorbin.verticaltablayout.widget.TabView;
 
 
-public class FenleiFragment extends BaseFragment<CategroyListContract.Persenter> implements CategroyListContract.View, VerticalTabLayout.OnTabSelectedListener {
+public class FenleiFragment extends BaseFragment<CategroyListContract.Persenter> implements CategroyListContract.View,
+        VerticalTabLayout.OnTabSelectedListener , BaseAdapter.ItemClickHandler {
 
 
     @BindView(R.id.verticalTab)
@@ -98,6 +102,7 @@ public class FenleiFragment extends BaseFragment<CategroyListContract.Persenter>
         categroyAdapter = new CategroyAdapter(beans, context);
         rvCategroy.setAdapter(categroyAdapter);
 
+        categroyAdapter.setOnItemClickHandler(this);
     }
 
     @Override
@@ -165,5 +170,14 @@ public class FenleiFragment extends BaseFragment<CategroyListContract.Persenter>
     @Override
     public void onTabReselected(TabView tab, int position) {
 
+    }
+
+    @Override
+    public void itemClick(int position, BaseAdapter.BaseViewHolder holder) {
+       int id = beans.get(position).getId();
+
+        Intent intent = new Intent(context, SortDetailActivity.class);
+        intent.putExtra("sortId",id);
+        startActivity(intent);
     }
 }

@@ -5,7 +5,7 @@
     <string name="title_fenlei">分类</string>
     <string name="title_shopping">购物</string>
     <string name="title_mine">我的</string>
-
+    <string name="price_news_model">￥$</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">这是购物页面</string>
 </resources>
