@@ -20,6 +20,8 @@
         <activity android:name=".details.PinpaiDetailsActivity"></activity>
         <activity android:name=".details.NewHotActivity" />
         <activity android:name=".details.BrandListActivity" />
+        <activity android:name=".details.BrandDetailActivity" />
+        <activity android:name=".details.NewHotDetailActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">

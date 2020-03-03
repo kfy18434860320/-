@@ -74,10 +74,10 @@ public class NewHotActivity extends BaseActivity<ShouyeContract.NewHotPersenter>
                 public void itemClick(int position, BaseAdapter.BaseViewHolder holder) {
                     NewDataBean.DataBeanX.DataBean dataBean = newList.get(position);
                     int id = dataBean.getId();
-                  /*  Intent intent1 = new Intent(NewHotActivity.this, NewHotDetailActivity.class);
+                   Intent intent1 = new Intent(NewHotActivity.this, NewHotDetailActivity.class);
                     intent1.putExtra("new","新品");
                     intent1.putExtra("id",id);
-                    startActivity(intent1);*/
+                    startActivity(intent1);
                 }
             });
         } else {
@@ -90,10 +90,10 @@ public class NewHotActivity extends BaseActivity<ShouyeContract.NewHotPersenter>
                 public void itemClick(int position, BaseAdapter.BaseViewHolder holder) {
                     NewDataBean.DataBeanX.DataBean dataBean = hotList.get(position);
                     int id = dataBean.getId();
-                    /*Intent intent1 = new Intent(NewHotActivity.this, NewHotDetailActivity.class);
+                    Intent intent1 = new Intent(NewHotActivity.this, NewHotDetailActivity.class);
                     intent1.putExtra("new","人气");
                     intent1.putExtra("id",id);
-                    startActivity(intent1);*/
+                    startActivity(intent1);
                 }
             });
         }

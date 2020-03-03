@@ -5,6 +5,8 @@ import com.example.shopping.models.bean.BannerInfoTopBean;
 import com.example.shopping.models.bean.BrandListBean;
 import com.example.shopping.models.bean.BrandListDetailBean;
 import com.example.shopping.models.bean.BrandTopImgBean;
+import com.example.shopping.models.bean.BuyBean;
+import com.example.shopping.models.bean.GoodsRelatedbean;
 import com.example.shopping.models.bean.NewDataBean;
 import com.example.shopping.models.bean.ShouYeBean;
 import com.example.shopping.models.bean.ZhuantiBean;
@@ -45,5 +47,13 @@ public interface ShouyeApi {
     @GET("api/goods/list")
     Flowable<NewDataBean> getHotData(@Query("isHot") int isHot,@Query("page") int page,@Query("size")int size,
                                      @Query("order") String order,@Query("sort") String sort,@Query("categoryId") int id);
+
+    //商品购买详情页
+    @GET("api/goods/detail")
+    Flowable<BuyBean> getBuyData(@Query("id") int id);
+
+    //商品购买详情页列表数据
+    @GET("api/goods/related")
+    Flowable<GoodsRelatedbean> getGoodsRelated(@Query("id") int id);
 
 }

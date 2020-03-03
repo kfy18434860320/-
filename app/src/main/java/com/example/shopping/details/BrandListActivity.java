@@ -62,9 +62,9 @@ public class BrandListActivity extends BaseActivity<BrandListContract.Persenter>
     public void itemClick(int position, BaseAdapter.BaseViewHolder holder) {
         BrandListBean.DataBeanX.DataBean dataBean = data.get(position);
         int id = dataBean.getId();
-        /*Intent intent = new Intent(this, BrandDetailActivity.class);
+        Intent intent = new Intent(this, BrandDetailActivity.class);
         intent.putExtra("id",id);
-        startActivity(intent);*/
+        startActivity(intent);
 
     }
 }
