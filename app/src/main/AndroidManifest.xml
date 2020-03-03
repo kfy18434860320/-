@@ -18,6 +18,8 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".details.PinpaiDetailsActivity"></activity>
+        <activity android:name=".details.NewHotActivity" />
+        <activity android:name=".details.BrandListActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
