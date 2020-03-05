@@ -5,33 +5,19 @@ import android.content.SharedPreferences;
 
 import com.example.shopping.apps.MyApp;
 
-public class SharedPreferencesUtil {
 
-    private static SharedPreferences.Editor editor;
-    private static SharedPreferencesUtil instance;
+public class SpUtils {
+    private static SpUtils instance;
     private SharedPreferences sp;
-    public SharedPreferencesUtil(){
-        sp = MyApp.myApp.getSharedPreferences("shop", Context.MODE_PRIVATE);
+    public SpUtils(){
+        sp = MyApp.myApp.getSharedPreferences("shoping", Context.MODE_PRIVATE);
     }
 
-    //添加ui模式
-    public static void addModeUI(Context context, boolean bool){
-        editor = context.getSharedPreferences("ModeUI", Context.MODE_PRIVATE).edit();
-        editor.putBoolean("mode_ui",bool);
-        editor.commit();
-    }
-
-    public static void setLogin(Context context, String username,String password){
-        editor = context.getSharedPreferences("user", Context.MODE_PRIVATE).edit();
-        editor.putString("username",username);
-        editor.putString("password",password);
-        editor.commit();
-    }
-    public static SharedPreferencesUtil getInstance(){
+    public static SpUtils getInstance(){
         if(instance == null){
-            synchronized (SharedPreferencesUtil.class){
+            synchronized (SpUtils.class){
                 if(instance == null){
-                    instance = new SharedPreferencesUtil();
+                    instance = new SpUtils();
                 }
             }
         }
@@ -78,5 +64,4 @@ public class SharedPreferencesUtil {
     public Long getLong(String key){
         return sp.getLong(key,0);
     }
-
 }
