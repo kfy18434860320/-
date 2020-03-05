@@ -17,7 +17,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-
+        <activity android:name=".ui.login.LoginActivity"/>
+        <activity android:name=".ui.login.RegisterActivity"/>
         <activity android:name=".details.PinpaiDetailsActivity"/>
         <activity android:name=".details.NewHotActivity" />
         <activity android:name=".details.BrandListActivity" />
