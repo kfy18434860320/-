@@ -8,9 +8,7 @@ import com.example.shopping.models.bean.BrandTopImgBean;
 import com.example.shopping.models.bean.BuyBean;
 import com.example.shopping.models.bean.GoodsRelatedbean;
 import com.example.shopping.models.bean.NewDataBean;
-import com.example.shopping.models.bean.RegisterBean;
 import com.example.shopping.models.bean.ShouYeBean;
-import com.example.shopping.models.bean.UserBean;
 import com.example.shopping.models.bean.ZhuantiBean;
 
 import io.reactivex.Flowable;
@@ -60,12 +58,6 @@ public interface ShouyeApi {
     @GET("api/goods/related")
     Flowable<GoodsRelatedbean> getGoodsRelated(@Query("id") int id);
 
-    //登录
-    @POST("api/auth/login")
-    Flowable<UserBean> login(@Field("nickname") String nickname, @Field("password") String password);
 
-    //注册
-    @POST("api/auth/register")
-    Flowable<RegisterBean> register(@Field("nickname") String nickname, @Field("password") String password);
 
 }
