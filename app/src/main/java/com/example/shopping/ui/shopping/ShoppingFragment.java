@@ -31,7 +31,7 @@ public class ShoppingFragment extends BaseFragment {
             Intent intent = new Intent(context, LoginActivity.class);
             startActivityForResult(intent,100);
         } else {
-        //展示购物车页面
+          //登陆则展示购物车页面
         }
     }
 

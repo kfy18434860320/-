@@ -60,7 +60,6 @@ public interface ShouyeApi {
     @GET("api/goods/related")
     Flowable<GoodsRelatedbean> getGoodsRelated(@Query("id") int id);
 
-
     //登录
     @POST("api/auth/login")
     Flowable<UserBean> login(@Field("nickname") String nickname, @Field("password") String password);

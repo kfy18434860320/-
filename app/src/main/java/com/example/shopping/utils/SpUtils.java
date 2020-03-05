@@ -10,7 +10,7 @@ public class SpUtils {
     private static SpUtils instance;
     private SharedPreferences sp;
     public SpUtils(){
-        sp = MyApp.myApp.getSharedPreferences("shoping", Context.MODE_PRIVATE);
+        sp = MyApp.myApp.getSharedPreferences("shopping", Context.MODE_PRIVATE);
     }
 
     public static SpUtils getInstance(){
