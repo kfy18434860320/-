@@ -1,6 +1,7 @@
 package com.example.shopping.ui.login;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +15,9 @@ import com.example.shopping.interfaces.shangcheng.details.RegisterContract;
 import com.example.shopping.models.bean.RegisterBean;
 import com.example.shopping.persenter.login.RegisterPersenter;
 
+
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class RegisterActivity extends BaseActivity<RegisterContract.Persenter> implements RegisterContract.View {
 

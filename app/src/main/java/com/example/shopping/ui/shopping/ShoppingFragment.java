@@ -1,18 +1,48 @@
 package com.example.shopping.ui.shopping;
 
 
-
 import android.content.Intent;
 import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.TextView;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.shopping.R;
+import com.example.shopping.adapter.shopping.ShoppingAdapter;
 import com.example.shopping.base.BaseFragment;
-import com.example.shopping.interfaces.IBasePersenter;
+import com.example.shopping.interfaces.shangcheng.ShoppingContract;
+import com.example.shopping.models.bean.CardListBean;
+import com.example.shopping.persenter.Shopping.CardListPersenter;
 import com.example.shopping.ui.login.LoginActivity;
-import com.example.shopping.utils.SpUtils;
+import com.example.shopping.utils.SharedPreferencesUtil;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
 
 
-public class ShoppingFragment extends BaseFragment {
+public class ShoppingFragment extends BaseFragment<ShoppingContract.Persenter> implements ShoppingContract.View, View.OnClickListener {
+    @BindView(R.id.shop_recycle)
+    RecyclerView shopRecycle;
+    @BindView(R.id.shop_danxuan)
+    RadioButton shopDanxuan;
+    @BindView(R.id.shop_all)
+    TextView shopAll;
+    @BindView(R.id.shop_jishu)
+    TextView shopJishu;
+    @BindView(R.id.shop_xiadan)
+    Button shopXiadan;
+    @BindView(R.id.shop_order)
+    TextView shopOrder;
+    @BindView(R.id.shop_price)
+    TextView shopPrice;
+    private ShoppingAdapter shoppingAdapter;
+
     @Override
     protected int getLayout() {
         return R.layout.fragment_shopping;
@@ -20,23 +50,51 @@ public class ShoppingFragment extends BaseFragment {
 
     @Override
     protected void initView() {
-
+        shopRecycle.setLayoutManager(new LinearLayoutManager(context));
+        ArrayList<CardListBean.DataBean.CartListBean> cartListBeans = new ArrayList<>();
+        shoppingAdapter = new ShoppingAdapter(cartListBeans, context);
+        shopRecycle.setAdapter(shoppingAdapter);
+        shopOrder.setOnClickListener(this);
     }
 
     @Override
-    protected void initData() {
-        //如果用户没有登录就要
-        String token = SpUtils.getInstance().getString("token");
-        if (TextUtils.isEmpty(token)) {
-            Intent intent = new Intent(context, LoginActivity.class);
-            startActivityForResult(intent,100);
-        } else {
-          // 已登录则展示购物车页面
+    public void startActivityForResult(Intent intent, int requestCode) {
+        super.startActivityForResult(intent, requestCode);
+        if (requestCode == 300) {
+            persenter.getCardList();
         }
     }
 
     @Override
-    protected IBasePersenter createPersenter() {
-        return null;
+    protected void initData() {
+        String token = SharedPreferencesUtil.getInstance().getString("token");
+        if (TextUtils.isEmpty(token)) {
+            Intent intent = new Intent(context, LoginActivity.class);
+            startActivityForResult(intent, 300);
+        } else {
+            persenter.getCardList();
+        }
+    }
+
+    @Override
+    protected ShoppingContract.Persenter createPersenter() {
+        return new CardListPersenter();
+    }
+
+    @Override
+    public void getCardListReturn(CardListBean result) {
+        List<CardListBean.DataBean.CartListBean> cartList = result.getData().getCartList();
+        shoppingAdapter.updata(cartList);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.shop_order:
+                shopOrder.setText("完成");
+                shopXiadan.setText("删除所选");
+                shopPrice.setVisibility(View.GONE);
+                break;
+        }
     }
 }
