@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -30,7 +30,7 @@ public class ShoppingFragment extends BaseFragment<ShoppingContract.Persenter> i
     @BindView(R.id.shop_recycle)
     RecyclerView shopRecycle;
     @BindView(R.id.shop_danxuan)
-    RadioButton shopDanxuan;
+    CheckBox shopDanxuan;
     @BindView(R.id.shop_all)
     TextView shopAll;
     @BindView(R.id.shop_jishu)
@@ -91,10 +91,18 @@ public class ShoppingFragment extends BaseFragment<ShoppingContract.Persenter> i
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.shop_order:
-                shopOrder.setText("完成");
-                shopXiadan.setText("删除所选");
-                shopPrice.setVisibility(View.GONE);
+                if (shopOrder.getText().toString().equals("编辑")){
+                    shopOrder.setText("完成");
+                    shopXiadan.setText("删除所选");
+                    shopPrice.setVisibility(View.GONE);
+                }else{
+                    shopOrder.setText("编辑");
+                    shopXiadan.setText("下单");
+                    shopPrice.setVisibility(View.VISIBLE);
+                }
                 break;
         }
     }
+
+
 }

@@ -2,6 +2,7 @@ package com.example.shopping.ui.login;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,9 +19,11 @@ import com.example.shopping.models.bean.UserBean;
 
 import com.example.shopping.persenter.login.LoginPersenter;
 import com.example.shopping.utils.SharedPreferencesUtil;
+import com.example.shopping.utils.SpUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class LoginActivity extends BaseActivity<LoginContract.Persenter> implements LoginContract.View {
 
@@ -67,6 +70,7 @@ public class LoginActivity extends BaseActivity<LoginContract.Persenter> impleme
 
     }
 
+
     @Override
     protected LoginPersenter createPersenter() {
         return new LoginPersenter();
@@ -74,24 +78,17 @@ public class LoginActivity extends BaseActivity<LoginContract.Persenter> impleme
 
     @Override
     public void loginReturn(UserBean result) {
-        /*if (result.getData().getCode() == 200) {
-            Toast.makeText(this, "登陆成功", Toast.LENGTH_SHORT).show();
-            SharedPreferencesUtil.getInstance().setValue("name", editUsername.getText().toString());
-            SharedPreferencesUtil.getInstance().setValue("password", editPassword.getText().toString());*/
-        SharedPreferencesUtil.getInstance().setValue("token", result.getData().getToken());
-       /* }else{
-            Toast.makeText(this, result.getErrmsg(), Toast.LENGTH_SHORT).show();
-        }*/
+        if(result.getData().getCode()==200){
+            showTips("登录成功");
+            //登录成功将token存入sp
+            SpUtils.getInstance().setValue("token", result.getData().getToken());
+
+        }else {
+            showTips("账号重复重新登录");
+        }
+
+        finish();
+
     }
 
-    /*@Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 100 && resultCode == 200){
-            name = data.getStringExtra("name");
-            password = data.getStringExtra("password");
-            editPassword.setText(password);
-            editUsername.setText(name);
-        }
-    }*/
 }
